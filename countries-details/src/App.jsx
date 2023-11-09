@@ -1,20 +1,21 @@
-import { useState } from 'react'
+import { createContext, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import CountryDetails from './pages/CountryDetails'
 import NavBar from './components/NavBar'
 
+export const RootContext = createContext();
+
 function App() {
+
+  const [selectedCountry, setSelectedCountry ] = useState(null)
+  const [showCountryDetails, setShowCountryDetails] = useState(false)
   
   return (
     <div className='font-nunitoSans'>
-      <BrowserRouter>
+      <RootContext.Provider value={{selectedCountry, setSelectedCountry, showCountryDetails, setShowCountryDetails}}>
         <NavBar/>
-        <Routes>
-          <Route path={'/'} element={<Home/>}/>
-          <Route path={'/country-details'} element={<CountryDetails/>}/>
-        </Routes>
-      </BrowserRouter>
+        <Home/>
+      </RootContext.Provider>
     </div>
   )
 }
