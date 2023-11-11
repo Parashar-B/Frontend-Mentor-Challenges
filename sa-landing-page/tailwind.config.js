@@ -9,7 +9,7 @@ export default {
   ],
   theme: {
     extend: {
-      theme: {
+      fontFamily: {
         barlow : ['Barlow', ...defaultTheme.fontFamily.sans],
         fraunces: ['Fraunces', ...defaultTheme.fontFamily.sans]
       }
